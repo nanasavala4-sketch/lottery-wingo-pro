@@ -130,3 +130,43 @@ button{
 button:hover{
   transform:scale(1.05);
 }
+#loginPage{
+    width:320px;
+    margin:60px auto;
+    background:#ffffff;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 4px 15px rgba(0,0,0,.2);
+    text-align:center;
+}
+
+#loginPage h2{
+    margin-bottom:20px;
+}
+
+#loginPage input{
+    width:90%;
+    padding:12px;
+    margin:10px 0;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:16px;
+}
+
+#loginPage button{
+    width:95%;
+    padding:12px;
+    margin-top:10px;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+    color:#fff;
+}
+
+#loginBtn{
+    background:#16a34a;
+}
+
+#registerBtn{
+    background:#2563eb;
+}
