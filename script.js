@@ -1,3 +1,23 @@
+// Login System
+const loginPage = document.getElementById("loginPage");
+const gamePage = document.getElementById("gamePage");
+
+document.getElementById("loginBtn").onclick = () => {
+  const user = document.getElementById("username").value;
+  const pass = document.getElementById("password").value;
+
+  if (user === "" || pass === "") {
+    alert("Username आणि Password टाका");
+    return;
+  }
+
+  loginPage.style.display = "none";
+  gamePage.style.display = "block";
+};
+
+document.getElementById("registerBtn").onclick = () => {
+  alert("Registration Successful");
+};
 // 30 सेकंदांचा Demo Timer
 let seconds = 30;
 const timer = document.getElementById("timer");
