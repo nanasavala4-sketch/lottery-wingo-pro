@@ -96,3 +96,23 @@ document.querySelectorAll(".numbers button").forEach(btn=>{
 for(let i=0;i<5;i++){
  addHistory();
 }
+document.getElementById("depositBtn").onclick = () => {
+    balance += 100;
+    document.querySelector(".wallet h1").innerHTML = "₹" + balance;
+    alert("₹100 Deposit झाले");
+};
+
+document.getElementById("withdrawBtn").onclick = () => {
+    if(balance >= 100){
+        balance -= 100;
+        document.querySelector(".wallet h1").innerHTML = "₹" + balance;
+        alert("₹100 Withdraw झाले");
+    }else{
+        alert("Balance कमी आहे");
+    }
+};
+
+document.getElementById("logoutBtn").onclick = () => {
+    gamePage.style.display = "none";
+    loginPage.style.display = "block";
+};
