@@ -47,6 +47,8 @@ function addHistory(){
  const period=Math.floor(Math.random()*900000)+100000;
  const number=Math.floor(Math.random()*10);
 
+checkResult(number);
+  
  const result=number<=4?"Small":"Big";
 
  const row=document.createElement("tr");
