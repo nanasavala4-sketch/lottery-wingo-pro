@@ -63,7 +63,7 @@ if(currentBet !== null){
  <td>${result}</td>
  `;
 
- history.prepend(row);
+ history.insertBefore(row, history.firstChild);
 
  while(history.rows.length>10){
    history.deleteRow(10);
