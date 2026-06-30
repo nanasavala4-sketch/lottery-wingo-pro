@@ -1,3 +1,5 @@
+alert("script.js चालू झाला");
+
 // Login System
 const loginPage = document.getElementById("loginPage");
 const gamePage = document.getElementById("gamePage");
