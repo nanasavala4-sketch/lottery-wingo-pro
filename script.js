@@ -49,7 +49,9 @@ function addHistory(){
  const period=Math.floor(Math.random()*900000)+100000;
  const number=Math.floor(Math.random()*10);
 
-checkResult(number);
+if(currentBet !== null){
+    checkResult(number);
+}
   
  const result=number<=4?"Small":"Big";
 
