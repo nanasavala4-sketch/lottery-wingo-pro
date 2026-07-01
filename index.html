@@ -3,61 +3,115 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Win Color Demo</title>
+
+<title>Win Color Pro</title>
 
 <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
 <!-- Login Page -->
+
 <div id="loginPage">
 
-  <h2 style="text-align:center;">Login</h2>
+<div class="loginCard">
 
-  <input type="text" id="username" placeholder="Username">
+<h1>WIN COLOR PRO</h1>
 
-  <br><br>
+<input type="text" id="username" placeholder="Username">
 
-  <input type="password" id="password" placeholder="Password">
+<input type="password" id="password" placeholder="Password">
 
-  <br><br>
+<button id="loginBtn">Login</button>
 
-  <button id="loginBtn">Login</button>
+<button id="registerBtn">Register</button>
 
-  <button id="registerBtn">Register</button>
+</div>
 
 </div>
 
 <!-- Game Page -->
+
 <div id="gamePage" style="display:none;">
 
-<div class="header">
-<h1>WIN COLOR</h1>
-</div>
+<header>
+
+<h2>WIN COLOR PRO</h2>
+
+</header>
+
+<!-- Wallet -->
 
 <div class="wallet">
-<h2>Balance</h2>
-<h1>₹1000</h1>
+
+<p>Wallet Balance</p>
+
+<h1 id="balance">₹1000</h1>
+
 </div>
+
+<!-- Wallet Buttons -->
+
 <div class="walletButtons">
-  <button id="depositBtn">💰 Deposit</button>
-  <button id="withdrawBtn">💸 Withdraw</button>
-  <button id="logoutBtn">🚪 Logout</button>
+
+<button id="depositBtn">💰 Deposit</button>
+
+<button id="withdrawBtn">💸 Withdraw</button>
+
+<button id="logoutBtn">🚪 Logout</button>
+
 </div>
-  
+
+<!-- Timer -->
+
 <div class="timerBox">
-<h3>Time Remaining</h3>
+
+<h3>Next Result</h3>
+
 <div id="timer">00:30</div>
+
 </div>
+
+<!-- Bet Amount -->
+
+<div class="amountBox">
+
+<h3>Select Amount</h3>
+
+<div class="amountButtons">
+
+<button class="amount" data-amount="10">₹10</button>
+
+<button class="amount" data-amount="50">₹50</button>
+
+<button class="amount" data-amount="100">₹100</button>
+
+<button class="amount" data-amount="500">₹500</button>
+
+<button class="amount" data-amount="1000">₹1000</button>
+
+</div>
+
+</div>
+
+<!-- Color Buttons -->
 
 <div class="colors">
+
 <button class="green">Green</button>
+
 <button class="violet">Violet</button>
+
 <button class="red">Red</button>
+
 </div>
 
+<!-- Number Buttons -->
+
 <div class="numbers">
+
 <button>0</button>
 <button>1</button>
 <button>2</button>
@@ -69,22 +123,32 @@
 <button>7</button>
 <button>8</button>
 <button>9</button>
+
 </div>
+
+<!-- Big Small -->
 
 <div class="bigsmall">
+
 <button class="big">BIG</button>
+
 <button class="small">SMALL</button>
-</div>
 
-<h2>Game History</h2>
+  </div>
+  <!-- Game History -->
 
-<table>
+<h2 class="historyTitle">Game History</h2>
 
+<table class="historyTable">
+
+<thead>
 <tr>
 <th>Period</th>
 <th>Number</th>
 <th>Result</th>
+<th>Color</th>
 </tr>
+</thead>
 
 <tbody id="history">
 
@@ -92,9 +156,49 @@
 
 </table>
 
+<!-- Profile -->
+
+<div class="profileCard">
+
+<h3>Player Profile</h3>
+
+<p><b>User:</b> <span id="profileName">Guest</span></p>
+
+<p><b>Status:</b> Demo Player</p>
+
+</div>
+
+<!-- Statistics -->
+
+<div class="statsCard">
+
+<h3>Statistics</h3>
+
+<p>Total Bets : <span id="totalBet">0</span></p>
+
+<p>Total Wins : <span id="totalWin">0</span></p>
+
+<p>Total Loss : <span id="totalLoss">0</span></p>
+
+</div>
+
+<!-- Bottom Navigation -->
+
+<div class="bottomNav">
+
+<button>🏠 Home</button>
+
+<button>📜 History</button>
+
+<button>👤 Profile</button>
+
+<button>⚙️ Settings</button>
+
+</div>
+
 </div>
 
 <script src="script.js"></script>
 
 </body>
-</html>
+  </html>
