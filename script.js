@@ -72,8 +72,47 @@ loginBtn.onclick = () => {
 };
 
 // Register
-registerBtn.onclick=()=>{
-    alert("Demo Register Success");
+registerBtn.onclick = async () => {
+  try {
+    const user = await createUserWithEmailAndPassword(
+      auth,
+      username.value + "@wincolor.com",
+      password.value
+    );
+
+    await setDoc(doc(db, "users", user.user.uid), {
+      username: username.value,
+      balance: 1000
+    });
+
+    alert("Register Success");
+  } catch (e) {
+    alert(e.message);
+  }
+};
+
+// Login
+loginBtn.onclick = async () => {
+  try {
+    const user = await signInWithEmailAndPassword(
+      auth,
+      username.value + "@wincolor.com",
+      password.value
+    );
+
+    const snap = await getDoc(doc(db, "users", user.user.uid));
+
+    if (snap.exists()) {
+      balance = snap.data().balance;
+      balanceText.innerHTML = "₹" + balance;
+      document.getElementById("profileName").innerHTML = snap.data().username;
+    }
+
+    loginPage.style.display = "none";
+    gamePage.style.display = "block";
+  } catch (e) {
+    alert("Login Failed");
+  }
 };
 
 // Deposit
