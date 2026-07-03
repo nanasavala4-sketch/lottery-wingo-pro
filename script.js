@@ -49,7 +49,7 @@ balanceText.innerHTML = "₹" + balance;
 
 // Bet
 let betAmount = 10;
-let currentBet = null;
+let selectedBet = null;
 
 // Statistics
 let totalBet = 0;
@@ -181,7 +181,7 @@ alert("Bet Amount ₹"+betAmount);
 
 document.querySelector(".green").onclick=()=>{
 
-currentBet="Green";
+selectedBet = "Green";
 
 alert("Green Bet");
 
@@ -189,7 +189,7 @@ alert("Green Bet");
 
 document.querySelector(".red").onclick=()=>{
 
-currentBet="Red";
+selectedBet = "Red";
 
 alert("Red Bet");
 
@@ -197,7 +197,7 @@ alert("Red Bet");
 
 document.querySelector(".violet").onclick=()=>{
 
-currentBet="Violet";
+selectedBet = "Violet";
 
 alert("Violet Bet");
 
@@ -205,7 +205,7 @@ alert("Violet Bet");
 
 document.querySelector(".big").onclick=()=>{
 
-currentBet="Big";
+selectedBet = "Big";
 
 alert("Big Bet");
 
@@ -213,7 +213,7 @@ alert("Big Bet");
 
 document.querySelector(".small").onclick=()=>{
 
-currentBet="Small";
+selectedBet = "Small";
 
 alert("Small Bet");
 
@@ -223,7 +223,7 @@ document.querySelectorAll(".numbers button").forEach(btn=>{
 
 btn.onclick=()=>{
 
-currentBet=btn.innerText;
+selectedBet = btn.innerText;
 
 alert("Number "+currentBet);
 
@@ -526,3 +526,15 @@ document.getElementById("withdrawBtn").addEventListener("click",()=>{
 // Game Loaded
 
 showToast("Win Color Pro Loaded");
+document.getElementById("confirmBetBtn").onclick = () => {
+
+    if (selectedBet == null) {
+        alert("पहिले Bet निवडा");
+        return;
+    }
+
+    currentBet = selectedBet;
+
+    alert("✅ Bet Confirm : " + currentBet);
+
+};
