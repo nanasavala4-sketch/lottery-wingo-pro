@@ -273,7 +273,7 @@ setInterval(() => {
 // Game Logic
 // ====================
 
-function runGame() {
+async function runGame() {
 
     const number = Math.floor(Math.random() * 10);
 
@@ -335,6 +335,12 @@ if (currentBet == null) {
 
     localStorage.setItem("balance", balance);
 
+if (currentUser) {
+    await updateDoc(doc(db, "users", currentUser.uid), {
+        balance: balance
+    });
+      }
+  
     addHistory(number, color, result);
 
     document.getElementById("totalBet").innerHTML = totalBet;
