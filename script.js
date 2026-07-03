@@ -116,6 +116,12 @@ loginBtn.onclick = async () => {
 
     loginPage.style.display = "none";
     gamePage.style.display = "block";
+  
+  if (username.value === "admin") {
+    document.getElementById("adminPanel").style.display = "block";
+    loadAdminUsers();
+  }
+  
   } catch (e) {
     alert("Login Failed");
   }
