@@ -569,3 +569,40 @@ document.getElementById("confirmBetBtn").onclick = () => {
     alert("✅ Bet Confirm : " + currentBet);
 
 };
+
+// ======================
+// Admin Panel
+// ======================
+
+async function loadAdminUsers() {
+
+    const tbody = document.getElementById("adminUsers");
+    tbody.innerHTML = "";
+
+    const querySnapshot = await getDocs(collection(db, "users"));
+
+    querySnapshot.forEach((docSnap) => {
+
+        const data = docSnap.data();
+
+        const row = document.createElement("tr");
+
+        row.innerHTML = `
+            <td>${data.username}</td>
+            <td>₹${data.balance}</td>
+        `;
+
+        tbody.appendChild(row);
+
+    });
+
+}
+
+// Admin Login
+if (username.value === "admin") {
+
+    document.getElementById("adminPanel").style.display = "block";
+
+    loadAdminUsers();
+
+          }
