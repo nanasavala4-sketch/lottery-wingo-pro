@@ -50,6 +50,7 @@ balanceText.innerHTML = "₹" + balance;
 // Bet
 let betAmount = 10;
 let selectedBet = null;
+let currentBet = null;
 
 // Statistics
 let totalBet = 0;
