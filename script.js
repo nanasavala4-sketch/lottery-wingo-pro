@@ -120,7 +120,7 @@ loginBtn.onclick = async () => {
 };
 
 // Deposit
-document.getElementById("depositBtn").onclick=()=>{
+document.getElementById("depositBtn").onclick = async () => {
 
     balance+=100;
 
@@ -128,12 +128,18 @@ document.getElementById("depositBtn").onclick=()=>{
 
     localStorage.setItem("balance",balance);
 
+if (currentUser) {
+    await updateDoc(doc(db, "users", currentUser.uid), {
+        balance: balance
+    });
+}
+  
     alert("₹100 Deposit");
 
 };
 
 // Withdraw
-document.getElementById("withdrawBtn").onclick=()=>{
+document.getElementById("withdrawBtn").onclick = async () => {
 
     if(balance>=100){
 
@@ -143,6 +149,12 @@ document.getElementById("withdrawBtn").onclick=()=>{
 
         localStorage.setItem("balance",balance);
 
+      if (currentUser) {
+    await updateDoc(doc(db, "users", currentUser.uid), {
+        balance: balance
+    });
+      }
+      
         alert("₹100 Withdraw");
 
     }else{
