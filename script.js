@@ -597,12 +597,3 @@ async function loadAdminUsers() {
     });
 
 }
-
-// Admin Login
-if (username.value === "admin") {
-
-    document.getElementById("adminPanel").style.display = "block";
-
-    loadAdminUsers();
-
-          }
