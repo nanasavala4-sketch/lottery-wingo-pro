@@ -280,6 +280,12 @@ function runGame() {
 
     const bs = number >= 5 ? "Big" : "Small";
 
+  // Bet Confirm नसेल तर काहीही करू नका
+if (currentBet == null) {
+    addHistory(number, color, "No Bet");
+    return;
+  }
+  
     let result = "Lose";
 
     totalBet++;
