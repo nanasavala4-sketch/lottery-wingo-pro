@@ -226,7 +226,7 @@ btn.onclick=()=>{
 
 selectedBet = btn.innerText;
 
-alert("Number "+currentBet);
+alert("Number " + selectedBet);
 
 };
 
