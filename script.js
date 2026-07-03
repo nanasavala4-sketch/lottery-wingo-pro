@@ -327,6 +327,7 @@ if (currentBet == null) {
     document.getElementById("totalLoss").innerHTML = totalLoss;
 
     currentBet = null;
+selectedBet = null;
 
 }
 
