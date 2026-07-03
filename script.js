@@ -45,6 +45,7 @@ const password = document.getElementById("password");
 const balanceText = document.getElementById("balance");
 
 let balance = Number(localStorage.getItem("balance")) || 1000;
+let currentUser = null;
 balanceText.innerHTML = "₹" + balance;
 
 // Bet
@@ -101,6 +102,8 @@ loginBtn.onclick = async () => {
       password.value
     );
 
+    currentUser = user.user;
+    
     const snap = await getDoc(doc(db, "users", user.user.uid));
 
     if (snap.exists()) {
