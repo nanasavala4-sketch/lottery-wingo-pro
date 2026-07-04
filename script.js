@@ -594,9 +594,20 @@ async function loadAdminUsers() {
         const row = document.createElement("tr");
 
         row.innerHTML = `
-            <td>${data.username}</td>
-            <td>₹${data.balance}</td>
-        `;
+<td>${data.username}</td>
+
+<td>
+<input type="number"
+id="bal_${docSnap.id}"
+value="${data.balance}">
+</td>
+
+<td>
+<button onclick="updateBalance('${docSnap.id}')">
+Save
+</button>
+</td>
+`;
 
         tbody.appendChild(row);
 
