@@ -616,16 +616,19 @@ Save
 }
 
 window.updateBalance = async function(uid) {
+    try {
+        const newBalance = Number(
+            document.getElementById("bal_" + uid).value
+        );
 
-    const newBalance = Number(
-        document.getElementById("bal_" + uid).value
-    );
+        await updateDoc(doc(db, "users", uid), {
+            balance: newBalance
+        });
 
-    await updateDoc(doc(db, "users", uid), {
-        balance: newBalance
-    });
+        alert("✅ Balance Updated");
+        loadAdminUsers();
 
-    alert("✅ Balance Updated");
-
-    loadAdminUsers();
+    } catch (e) {
+        alert(e.message);
+    }
 };
