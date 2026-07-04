@@ -614,3 +614,18 @@ Save
     });
 
 }
+
+window.updateBalance = async function(uid) {
+
+    const newBalance = Number(
+        document.getElementById("bal_" + uid).value
+    );
+
+    await updateDoc(doc(db, "users", uid), {
+        balance: newBalance
+    });
+
+    alert("✅ Balance Updated");
+
+    loadAdminUsers();
+};
