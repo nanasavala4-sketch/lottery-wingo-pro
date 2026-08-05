@@ -651,7 +651,9 @@ document.getElementById("sendDepositBtn").onclick = async () => {
         return;
     }
 
-    await addDoc(collection(db, "depositRequests"), {
+    alert("Step 1");
+
+await addDoc(collection(db, "depositRequests"), {
         uid: currentUser.uid,
         username: document.getElementById("profileName").innerText,
         amount: amount,
@@ -660,6 +662,8 @@ document.getElementById("sendDepositBtn").onclick = async () => {
         createdAt: serverTimestamp()
     });
 
+alert("Step 2");
+  
     alert("✅ Deposit Request Submitted");
 };
 
