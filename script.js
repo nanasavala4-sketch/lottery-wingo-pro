@@ -666,7 +666,3 @@ alert("Step 2");
   
     alert("✅ Deposit Request Submitted");
 };
-
-document.getElementById("sendDepositBtn").onclick = () => {
-    alert("Button Working");
-};
