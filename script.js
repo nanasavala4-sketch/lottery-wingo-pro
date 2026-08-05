@@ -13,7 +13,9 @@ import {
   getDoc,
   updateDoc,
   collection,
-  getDocs
+  getDocs,
+  addDoc,
+  serverTimestamp
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -632,4 +634,31 @@ window.updateBalance = async function(uid) {
     } catch (e) {
         alert(e.message);
     }
+};
+
+document.getElementById("sendDepositBtn").onclick = async () => {
+
+    if (!currentUser) {
+        alert("Login First");
+        return;
+    }
+
+    const amount = Number(document.getElementById("depositAmount").value);
+    const txn = document.getElementById("upiTxn").value.trim();
+
+    if (amount <= 0 || txn === "") {
+        alert("Amount आणि Transaction ID भरा");
+        return;
+    }
+
+    await addDoc(collection(db, "depositRequests"), {
+        uid: currentUser.uid,
+        username: document.getElementById("profileName").innerText,
+        amount: amount,
+        transactionId: txn,
+        status: "Pending",
+        createdAt: serverTimestamp()
+    });
+
+    alert("✅ Deposit Request Submitted");
 };
