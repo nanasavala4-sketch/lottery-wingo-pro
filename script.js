@@ -662,3 +662,7 @@ document.getElementById("sendDepositBtn").onclick = async () => {
 
     alert("✅ Deposit Request Submitted");
 };
+
+document.getElementById("sendDepositBtn").onclick = () => {
+    alert("Button Working");
+};
