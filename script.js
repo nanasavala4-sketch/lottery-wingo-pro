@@ -651,9 +651,11 @@ document.getElementById("sendDepositBtn").onclick = async () => {
         return;
     }
 
+    try {
+
     alert("Step 1");
 
-await addDoc(collection(db, "depositRequests"), {
+    await addDoc(collection(db, "depositRequests"), {
         uid: currentUser.uid,
         username: document.getElementById("profileName").innerText,
         amount: amount,
@@ -662,7 +664,10 @@ await addDoc(collection(db, "depositRequests"), {
         createdAt: serverTimestamp()
     });
 
-alert("Step 2");
-  
+    alert("Step 2");
     alert("✅ Deposit Request Submitted");
+
+} catch (e) {
+    alert(e.message);
+    }
 };
