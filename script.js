@@ -123,7 +123,8 @@ loginBtn.onclick = async () => {
   }
   
   } catch (e) {
-    alert("Login Failed");
+    alert(e.code + "\n" + e.message);
+    console.error(e);
   }
 };
 
