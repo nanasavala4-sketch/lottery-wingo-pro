@@ -13,8 +13,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 
-const ADMIN_UID =
-    "7mVB5pMbA8UKpXxr7HA6IC5vqHw1";
+const ADMIN_UID = "7mVB5pMbA8UKpXxr7HA6IC5vqHw1";
 
 
 onAuthStateChanged(auth, async (user) => {
