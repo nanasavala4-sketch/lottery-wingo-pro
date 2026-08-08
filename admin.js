@@ -13,20 +13,25 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 
-const ADMIN_UID = "7mVB5pMbA8UKpXxr7HA6IC5vqHw1";
+const ADMIN_UID =
+    "7mVB5pMbA8UKpXxr7HA6IC5vqHw1";
 
 
 onAuthStateChanged(auth, async (user) => {
 
     if (!user) {
-        alert("❌ Admin login केलेले नाही.");
+
+        console.log("Admin login नाही.");
+
         return;
     }
 
-    alert("LOGIN UID: " + user.uid);
+    console.log("LOGIN UID:", user.uid);
 
     if (user.uid !== ADMIN_UID) {
+
         alert("❌ हा Admin UID नाही.");
+
         return;
     }
 
@@ -38,7 +43,8 @@ onAuthStateChanged(auth, async (user) => {
 
 async function loadDepositRequests() {
 
-    const box = document.getElementById("depositList");
+    const box =
+        document.getElementById("depositList");
 
     box.innerHTML = "Loading...";
 
@@ -51,7 +57,10 @@ async function loadDepositRequests() {
         box.innerHTML = "";
 
         if (snap.empty) {
-            box.innerHTML = "<p>कोणतीही Deposit Request नाही.</p>";
+
+            box.innerHTML =
+                "<p>कोणतीही Deposit Request नाही.</p>";
+
             return;
         }
 
@@ -62,20 +71,39 @@ async function loadDepositRequests() {
             if (data.status === "Pending") {
 
                 box.innerHTML += `
-                    <div style="border:1px solid #ccc;padding:15px;margin:10px 0">
 
-                        <b>${data.username || "Unknown"}</b><br>
+                    <div
+                        style="
+                        border:1px solid #ccc;
+                        padding:15px;
+                        margin:10px 0;
+                        "
+                    >
 
-                        Amount: ₹${data.amount || 0}<br>
+                        <b>
+                            ${data.username || "Unknown"}
+                        </b>
+
+                        <br>
+
+                        Amount:
+                        ₹${data.amount || 0}
+
+                        <br>
 
                         Transaction ID:
-                        ${data.transactionId || "-"}<br>
+                        ${data.transactionId || "-"}
 
-                        <button onclick="approveDeposit('${d.id}')">
+                        <br><br>
+
+                        <button
+                            onclick="approveDeposit('${d.id}')"
+                        >
                             ✅ Approve
                         </button>
 
                     </div>
+
                 `;
             }
 
@@ -85,7 +113,10 @@ async function loadDepositRequests() {
 
         console.error(error);
 
-        alert("FIREBASE ERROR: " + error.message);
+        alert(
+            "FIREBASE ERROR: " +
+            error.message
+        );
 
         box.innerHTML = "";
     }
@@ -96,39 +127,49 @@ window.approveDeposit = async function(id) {
 
     try {
 
-        const reqRef = doc(db, "depositRequests", id);
+        const reqRef =
+            doc(db, "depositRequests", id);
 
-        const reqSnap = await getDoc(reqRef);
+        const reqSnap =
+            await getDoc(reqRef);
 
         if (!reqSnap.exists()) {
-            alert("❌ Deposit request सापडली नाही.");
+
+            alert("❌ Request सापडली नाही.");
+
             return;
         }
 
-        const req = reqSnap.data();
+        const req =
+            reqSnap.data();
 
-        if (req.status !== "Pending") {
-            alert("❌ ही request आधीच process झाली आहे.");
-            return;
-        }
+        const userRef =
+            doc(db, "users", req.uid);
 
-        const userRef = doc(db, "users", req.uid);
-
-        const userSnap = await getDoc(userRef);
+        const userSnap =
+            await getDoc(userRef);
 
         if (!userSnap.exists()) {
+
             alert("❌ User सापडला नाही.");
+
             return;
         }
 
-        const balance = userSnap.data().balance || 0;
+        const balance =
+            userSnap.data().balance || 0;
 
         await updateDoc(userRef, {
-            balance: balance + Number(req.amount)
+
+            balance:
+                balance + Number(req.amount)
+
         });
 
         await updateDoc(reqRef, {
+
             status: "Approved"
+
         });
 
         alert("✅ Deposit Approved");
@@ -139,6 +180,9 @@ window.approveDeposit = async function(id) {
 
         console.error(error);
 
-        alert("APPROVE ERROR: " + error.message);
+        alert(
+            "APPROVE ERROR: " +
+            error.message
+        );
     }
 };
