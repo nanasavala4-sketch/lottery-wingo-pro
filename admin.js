@@ -8,6 +8,8 @@ import {
     updateDoc
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
+alert("ADMIN JS LOADED");
+
 async function loadDepositRequests() {
 
     const box = document.getElementById("depositList");
