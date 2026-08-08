@@ -26,13 +26,12 @@ onAuthStateChanged(auth, async (user) => {
     }
 
     console.log("LOGIN UID:", user.uid);
+alert("तुमचा Login UID:\n" + user.uid);
 
-    if (user.uid !== ADMIN_UID) {
-
-        alert("❌ हा Admin UID नाही.");
-
-        return;
-    }
+if (user.uid !== ADMIN_UID) {
+    alert("❌ हा Admin UID नाही.");
+    return;
+}
 
     alert("✅ ADMIN VERIFIED");
 
