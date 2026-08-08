@@ -1,4 +1,4 @@
-import { db } from "./firebase.js";
+import { db, auth } from "./firebase.js";
 
 import {
     collection,
@@ -8,30 +8,52 @@ import {
     updateDoc
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-alert("FIRESTORE IMPORTED");
+import {
+    onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+
+const ADMIN_UID = "7mVB5pMbA8UKpXxr7HA6IC5vqHw1";
+
+
+onAuthStateChanged(auth, async (user) => {
+
+    if (!user) {
+        alert("❌ Admin login केलेले नाही.");
+        return;
+    }
+
+    alert("LOGIN UID: " + user.uid);
+
+    if (user.uid !== ADMIN_UID) {
+        alert("❌ हा Admin UID नाही.");
+        return;
+    }
+
+    alert("✅ ADMIN VERIFIED");
+
+    loadDepositRequests();
+});
+
 
 async function loadDepositRequests() {
 
-    alert("LOADING DEPOSITS");
+    const box = document.getElementById("depositList");
+
+    box.innerHTML = "Loading...";
 
     try {
-
-        const box = document.getElementById("depositList");
-
-        if (!box) {
-            alert("depositList NOT FOUND");
-            return;
-        }
-
-        box.innerHTML = "Loading...";
 
         const snap = await getDocs(
             collection(db, "depositRequests")
         );
 
-        alert("Documents: " + snap.size);
-
         box.innerHTML = "";
+
+        if (snap.empty) {
+            box.innerHTML = "<p>कोणतीही Deposit Request नाही.</p>";
+            return;
+        }
 
         snap.forEach((d) => {
 
@@ -40,19 +62,14 @@ async function loadDepositRequests() {
             if (data.status === "Pending") {
 
                 box.innerHTML += `
-                    <div style="
-                        border:1px solid #ccc;
-                        padding:15px;
-                        margin:10px;
-                    ">
+                    <div style="border:1px solid #ccc;padding:15px;margin:10px 0">
 
-                        <b>${data.username || ""}</b><br>
+                        <b>${data.username || "Unknown"}</b><br>
 
                         Amount: ₹${data.amount || 0}<br>
 
-                        Txn: ${data.transactionId || ""}<br>
-
-                        Status: ${data.status || ""}<br><br>
+                        Transaction ID:
+                        ${data.transactionId || "-"}<br>
 
                         <button onclick="approveDeposit('${d.id}')">
                             ✅ Approve
@@ -66,11 +83,14 @@ async function loadDepositRequests() {
 
     } catch (error) {
 
+        console.error(error);
+
         alert("FIREBASE ERROR: " + error.message);
 
-        console.error(error);
+        box.innerHTML = "";
     }
 }
+
 
 window.approveDeposit = async function(id) {
 
@@ -81,18 +101,23 @@ window.approveDeposit = async function(id) {
         const reqSnap = await getDoc(reqRef);
 
         if (!reqSnap.exists()) {
-            alert("Deposit request not found");
+            alert("❌ Deposit request सापडली नाही.");
             return;
         }
 
         const req = reqSnap.data();
+
+        if (req.status !== "Pending") {
+            alert("❌ ही request आधीच process झाली आहे.");
+            return;
+        }
 
         const userRef = doc(db, "users", req.uid);
 
         const userSnap = await getDoc(userRef);
 
         if (!userSnap.exists()) {
-            alert("User not found");
+            alert("❌ User सापडला नाही.");
             return;
         }
 
@@ -112,10 +137,8 @@ window.approveDeposit = async function(id) {
 
     } catch (error) {
 
-        alert("APPROVE ERROR: " + error.message);
-
         console.error(error);
+
+        alert("APPROVE ERROR: " + error.message);
     }
 };
-
-loadDepositRequests();
