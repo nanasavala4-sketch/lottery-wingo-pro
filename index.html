@@ -1,1 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Win Color Pro</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7023879263984614"
+     crossorigin="anonymous"></script>
+  
+</head>
+
+<body>
+
+<!-- Login Page -->
+
+<div id="loginPage">
+
+<div class="loginCard">
+
+<h1>WIN COLOR PRO</h1>
+
+<input type="text" id="username" placeholder="Username">
+
+<input type="password" id="password" placeholder="Password">
+
+<button id="loginBtn">Login</button>
+
+<button id="registerBtn">Register</button>
+
+</div>
+
+</div>
+
+<!-- Game Page -->
+
+<div id="gamePage" style="display:none;">
+
+<header>
+
+<h2>WIN COLOR PRO</h2>
+
+</header>
+
+<!-- Wallet -->
+
+<div class="wallet">
+
+<p>Wallet Balance</p>
+
+<h1 id="balance">₹1000</h1>
+
+</div>
+
+<!-- Wallet Buttons -->
+
+<div class="walletButtons">
+
+<button id="depositBtn">💰 Deposit</button>
+
+<button id="withdrawBtn">💸 Withdraw</button>
+
+<button id="logoutBtn">🚪 Logout</button>
+
+</div>
+
+<!-- Deposit Request -->
+<div class="depositBox">
+<h3>💰 Deposit Request</h3>
+
+<input type="number" id="depositAmount" placeholder="Enter Amount">
+
+<input type="text" id="upiTxn" placeholder="UPI Transaction ID">
+
+<button id="sendDepositBtn">Send Deposit Request</button>
+
+</div>
+     
+<!-- Timer -->
+
+<div class="timerBox">
+
+<h3>Next Result</h3>
+
+<div id="timer">00:30</div>
+
+</div>
+
+<!-- Bet Amount -->
+
+<div class="amountBox">
+
+<h3>Select Amount</h3>
+
+<div class="amountButtons">
+
+<button class="amount" data-amount="10">₹10</button>
+
+<button class="amount" data-amount="50">₹50</button>
+
+<button class="amount" data-amount="100">₹100</button>
+
+<button class="amount" data-amount="500">₹500</button>
+
+<button class="amount" data-amount="1000">₹1000</button>
+
+</div>
+
+</div>
+
+<!-- Color Buttons -->
+
+<div class="colors">
+
+<button class="green">Green</button>
+
+<button class="violet">Violet</button>
+
+<button class="red">Red</button>
+
+</div>
+
+<!-- Number Buttons -->
+
+<div class="numbers">
+
+<button>0</button>
+<button>1</button>
+<button>2</button>
+<button>3</button>
+<button>4</button>
+
+<button>5</button>
+<button>6</button>
+<button>7</button>
+<button>8</button>
+<button>9</button>
+
+</div>
+
+<!-- Big Small -->
+
+<div class="bigsmall">
+
+<button class="big">BIG</button>
+
+<button class="small">SMALL</button>
+
+  </div>
+
+<button id="confirmBetBtn">✅ Confirm Bet</button>
+  
+  <!-- Game History -->
+
+<h2 class="historyTitle">Game History</h2>
+
+<table class="historyTable">
+
+<thead>
+<tr>
+<th>Period</th>
+<th>Number</th>
+<th>Result</th>
+<th>Color</th>
+</tr>
+</thead>
+
+<tbody id="history">
+
+</tbody>
+
+</table>
+
+<!-- Profile -->
+
+<div class="profileCard">
+
+<h3>Player Profile</h3>
+
+<p><b>User:</b> <span id="profileName">Guest</span></p>
+
+<p><b>Status:</b> Demo Player</p>
+
+</div>
+
+<!-- Statistics -->
+
+<div class="statsCard">
+
+<h3>Statistics</h3>
+
+<p>Total Bets : <span id="totalBet">0</span></p>
+
+<p>Total Wins : <span id="totalWin">0</span></p>
+
+<p>Total Loss : <span id="totalLoss">0</span></p>
+
+</div>
+
+<!-- Bottom Navigation -->
+
+<div class="bottomNav">
+
+<button>🏠 Home</button>
+
+<button>📜 History</button>
+
+<button>👤 Profile</button>
+
+<button>⚙️ Settings</button>
+
+</div>
+<!-- Admin Panel -->
+<div id="adminPanel" style="display:none; padding:20px;">
+
+<h2>👑 Admin Panel</h2>
+
+<table border="1" width="100%">
+<thead>
+<tr>
+<th>User</th>
+<th>Balance</th>
+</tr>
+</thead>
+
+<tbody id="adminUsers">
+
+</tbody>
+
+</table>
+
+</div>
+</div>
+
+<hr>
+
+<div style="text-align:center;padding:20px;">
+<a href="about.html">About</a> |
+<a href="privacy.html">Privacy Policy</a> |
+<a href="terms.html">Terms & Conditions</a> |
+<a href="contact.html">Contact</a>
+  </div>
+  
+<script type="module" src="script.js"></script>
+
+</body>
+  </html>
