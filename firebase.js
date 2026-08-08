@@ -2,17 +2,15 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/fireba
 
 import { getAuth } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
+import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"
 
 const firebaseConfig = {
-    apiKey: "तुमचा सध्याचा apiKey",
-    authDomain: "win-color-pro.firebaseapp.com",
-    projectId: "win-color-pro",
-    storageBucket: "win-color-pro.firebasestorage.app",
-    messagingSenderId: "1025777239942",
-    appId: "तुमचा सध्याचा appId",
-    measurementId: "तुमचा सध्याचा measurementId"
+  apiKey: "तुमचा खरा API KEY",
+  authDomain: "win-color-pro.firebaseapp.com",
+  projectId: "win-color-pro",
+  storageBucket: "win-color-pro.firebasestorage.app",
+  messagingSenderId: "तुमचा खरा SENDER ID",
+  appId: "तुमचा खरा APP ID"
 };
 
 
