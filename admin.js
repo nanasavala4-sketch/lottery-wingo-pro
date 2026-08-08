@@ -1,8 +1,4 @@
-alert("ADMIN JS LOADED");
-
 import { db } from "./firebase.js";
-
-alert("FIREBASE IMPORTED");
 
 import {
     collection,
